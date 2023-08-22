@@ -1,0 +1,78 @@
+<!DOCTYPE patchbay>
+<patchbay name="jackmidi-default-patchbay" version="0.9.8">
+ <output-sockets>
+  <socket client="system" name="system" type="jack-audio" exclusive="off">
+   <plug>capture_1</plug>
+   <plug>capture_2</plug>
+  </socket>
+  <socket client="qsynth" name="qsynth" type="jack-audio" exclusive="off">
+   <plug>left</plug>
+   <plug>right</plug>
+  </socket>
+  <socket client="incudine" name="incudine" type="jack-audio" exclusive="off">
+   <plug>out_1</plug>
+   <plug>out_2</plug>
+   <plug>out_3</plug>
+   <plug>out_4</plug>
+   <plug>out_5</plug>
+   <plug>out_6</plug>
+   <plug>out_7</plug>
+   <plug>out_8</plug>
+  </socket>
+  <socket client="a2j" name="a2j" type="jack-midi" exclusive="off">
+   <plug>Midi\ Through\ \[14\]\ \(capture\)\:\ Midi\ Through\ Port\-0</plug>
+  </socket>
+  <socket client="Midi\ Through" name="Midi Through" type="alsa-midi" exclusive="off">
+   <plug>Midi\ Through\ Port\-0</plug>
+  </socket>
+  <socket client="incudine" name="incudine-jackmidi" type="jack-midi" exclusive="off">
+   <plug>midi_out\-1</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket client="system" name="system" type="jack-audio" exclusive="off">
+   <plug>playback_1</plug>
+   <plug>playback_2</plug>
+   <plug>playback_3</plug>
+   <plug>playback_4</plug>
+  </socket>
+  <socket client="incudine" name="incudine" type="jack-audio" exclusive="off">
+   <plug>in_1</plug>
+   <plug>in_2</plug>
+   <plug>in_3</plug>
+   <plug>in_4</plug>
+   <plug>in_5</plug>
+   <plug>in_6</plug>
+   <plug>in_7</plug>
+   <plug>in_8</plug>
+  </socket>
+  <socket client="a2j" name="a2j" type="jack-midi" exclusive="off">
+   <plug>Midi\ Through\ \[14\]\ \(playback\)\:\ Midi\ Through\ Port\-0</plug>
+   <plug>FLUID\ Synth\ \([0-9]+\)\ \[129\]\ \(playback\)\:\ Synth\ input\ port\ \([0-9]+\:0\)</plug>
+  </socket>
+  <socket client="incudine" name="incudine" type="jack-midi" exclusive="off">
+   <plug>midi_in\-1</plug>
+  </socket>
+  <socket client="a2j" name="a2j 2" type="jack-midi" exclusive="off">
+   <plug>FLUID\ Synth\ \([0-9]+\)\ \[129\]\ \(playback\)\:\ Synth\ input\ port\ \([0-9]+\:0\)</plug>
+  </socket>
+  <socket client="Midi\ Through" name="Midi Through" type="alsa-midi" exclusive="off">
+   <plug>Midi\ Through\ Port\-0</plug>
+  </socket>
+  <socket client="a2jmidid" name="a2jmidid" type="alsa-midi" exclusive="off">
+   <plug>port</plug>
+  </socket>
+  <socket client="a2j" name="a2j-fluidsynth" type="jack-midi" exclusive="off">
+   <plug>FLUID\ Synth\ \([0-9]+\)\ \[129\]\ \(playback\)\:\ Synth\ input\ port\ \([0-9]+\:0\)</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable input="incudine" type="jack-audio" output="system"/>
+  <cable input="system" type="jack-audio" output="qsynth"/>
+  <cable input="system" type="jack-audio" output="incudine"/>
+  <cable input="a2jmidid" type="alsa-midi" output="Midi Through"/>
+  <cable input="a2j-fluidsynth" type="jack-midi" output="incudine-jackmidi"/>
+ </cables>
+</patchbay>
+
