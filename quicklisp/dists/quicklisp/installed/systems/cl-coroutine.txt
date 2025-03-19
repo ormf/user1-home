@@ -1,1 +1,0 @@
-dists/quicklisp/software/cl-coroutine-20160929-git/cl-coroutine.asd

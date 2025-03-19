@@ -40,16 +40,9 @@
 ;;; seconds.
 ;;;
 
-(pushnew :cuda-usocket-osc *features*)
-
-(set-clamps-doc-root "http://localhost:8282/")
-
-;;; fomus::*lilypond-exe*
-;;; /opt/homebrew/bin/lilypond
-
-(pushnew (pathname "~/work/snd/") *sfile-path*)
-(pushnew (pathname "~/work/snd/sfz/") *sfz-file-path*)
-(pushnew (pathname "~/work/snd/ats/") *ats-file-path*)
+(defparameter *sfile-path* (list (asdf:system-relative-pathname :clamps "extra/snd/")))
+(defparameter *sfz-preset-path* (list (asdf:system-relative-pathname :clamps "extra/snd/sfz/")))
+(defparameter *sfz-preset-lookup* (make-hash-table))
 
 (let ((sfz-assoc
         '(:flute-nv "000_Flute-nv.sfz"
@@ -60,3 +53,6 @@
              (format t ".")
              (setf (gethash sym *sfz-preset-lookup*) fname)))
   (format t "done~%"))
+
+(defun add-sfz-assoc (key fname)
+  (setf (gethash key *sfz-preset-lookup*) fname))

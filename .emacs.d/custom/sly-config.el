@@ -58,9 +58,9 @@
   (interactive)
   (setq incudine-hush (symbol-function 'std-incudine-hush)))
 
-(defun set-cm-incudine-hush ()
+(defun set-clamps-incudine-hush ()
   (interactive)
-  (setq incudine-hush (symbol-function 'cm-incudine-hush)))
+  (setq incudine-hush (symbol-function 'clamps-hush)))
 
 (defun incudine-rt-start ()
   (interactive)
@@ -72,19 +72,18 @@
 
 (defun install-incudine-hooks ()
   (interactive)
-  (sly-interactive-eval "(when (find-package :cm-all)
+  (sly-interactive-eval "(when (find-package :clamps)
     (call-sly-connected-hooks))"))
 
 ;;; (setq sly-connected-hook '(install-incudine-hooks sly-mrepl-on-connection))
 
-(setq sly-connected-hook
-      (cons 'install-incudine-hooks sly-connected-hook))
+;;; (setq sly-connected-hook (cons 'install-incudine-hooks sly-connected-hook))
 
 (defun test-midi ()
   (interactive)
   (sly-interactive-eval "(cm::testmidi)"))
 
-(set-cm-incudine-hush)
+(set-clamps-incudine-hush)
 
 (global-set-key "\C-x\C-l" 'sly)
 
