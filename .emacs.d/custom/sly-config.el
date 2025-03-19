@@ -40,17 +40,21 @@
 
 (setq sly-enable-evaluate-in-emacs t)
 
+(defun clamps ()
+  (interactive)
+  (sly-mrepl--with-repl (sly-mrepl--find-create (sly-connection))
+    (sly-mrepl--eval-for-repl
+     '(cl-user:clamps))))
+
 (defun std-incudine-hush ()
   (interactive)
   (progn
     (sly-interactive-eval "(incudine:flush-pending)")
-    (sly-interactive-eval "(dotimes (chan 16) (cm::sprout (cm::new cm::midi-control-change :time 0 :controller 123 :value 127 :channel chan)))")
-    (sly-interactive-eval "(incudine::node-free-unprotected)")
-;;;    (sly-interactive-eval "(scratch::node-free-all)")
-    ))
+    ;; (sly-interactive-eval "(dotimes (chan 16) (cm::sprout (cm::new cm::midi-control-change :time 0 :controller 123 :value 127 :channel chan)))")
+;;;    (sly-interactive-eval "(incudine::node-free-unprotected)")
+    (sly-interactive-eval "(incudine::node-free-all)")))
 
 (defun clamps-hush ()
-  "call clamps::rts-hush in common lisp"
   (interactive)
   (sly-interactive-eval "(clamps::rts-hush)"))
 
@@ -72,12 +76,13 @@
 
 (defun install-incudine-hooks ()
   (interactive)
-  (sly-interactive-eval "(when (find-package :clamps)
-    (call-sly-connected-hooks))"))
+  ;; (sly-interactive-eval "(when (find-package :clamps)
+  ;;   (clamps:call-sly-connected-hooks))")
+  )
 
-;;; (setq sly-connected-hook '(install-incudine-hooks sly-mrepl-on-connection))
-
-;;; (setq sly-connected-hook (cons 'install-incudine-hooks sly-connected-hook))
+(setq sly-connected-hook '(sly-mrepl-on-connection))
+(setq sly-connected-hook
+      (cons 'install-incudine-hooks sly-connected-hook))
 
 (defun test-midi ()
   (interactive)
