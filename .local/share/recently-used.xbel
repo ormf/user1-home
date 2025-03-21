@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///home/gast/.config/inkscape/keys/default.xml" added="2025-03-21T14:11:22.898624Z" modified="2025-03-21T14:11:22.898629Z" visited="2025-03-21T14:11:22.898625Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/xml"/>
+        <bookmark:applications>
+          <bookmark:application name="org.inkscape.Inkscape" exec="&apos;org.inkscape.Inkscape %u&apos;" modified="2025-03-21T14:11:22.898626Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/test.svg" added="2025-03-21T15:24:30.131147Z" modified="2025-03-21T15:34:07.840719Z" visited="2025-03-21T15:24:30.131148Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/svg+xml"/>
+        <bookmark:applications>
+          <bookmark:application name="org.inkscape.Inkscape" exec="&apos;org.inkscape.Inkscape %u&apos;" modified="2025-03-21T15:24:30.131168Z" count="2"/>
+          <bookmark:application name="nemo" exec="&apos;/usr/lib/firefox-developer-edition/firefox %u&apos;" modified="2025-03-21T15:34:07.840704Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///usr/share/soundfonts/freepats-general-midi.sf2" added="2025-03-21T15:26:06.214143Z" modified="2025-03-21T15:26:06.214149Z" visited="2025-03-21T15:26:06.214144Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-sf2"/>
+        <bookmark:applications>
+          <bookmark:application name="qsynth" exec="&apos;qsynth %u&apos;" modified="2025-03-21T15:26:06.214146Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///usr/local/bin/pulse-jack-pre-start.sh" added="2025-03-21T15:27:19.646885Z" modified="2025-03-21T15:27:35.879706Z" visited="2025-03-21T15:27:19.646886Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-shellscript"/>
+        <bookmark:applications>
+          <bookmark:application name="qjackctl" exec="&apos;qjackctl %u&apos;" modified="2025-03-21T15:27:35.879703Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///usr/local/bin/pulse-jack-post-start.sh" added="2025-03-21T15:27:29.188977Z" modified="2025-03-21T15:27:29.188986Z" visited="2025-03-21T15:27:29.188978Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-shellscript"/>
+        <bookmark:applications>
+          <bookmark:application name="qjackctl" exec="&apos;qjackctl %u&apos;" modified="2025-03-21T15:27:29.188980Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///usr/local/bin/pulse-jack-pre-stop.sh" added="2025-03-21T15:27:44.312081Z" modified="2025-03-21T15:27:44.312095Z" visited="2025-03-21T15:27:44.312083Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/x-shellscript"/>
+        <bookmark:applications>
+          <bookmark:application name="qjackctl" exec="&apos;qjackctl %u&apos;" modified="2025-03-21T15:27:44.312086Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/test.ps" added="2025-03-21T15:33:41.794351Z" modified="2025-03-21T15:33:53.611684Z" visited="2025-03-21T15:33:41.794353Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/x-eps"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="nemo" exec="&apos;gimp-3.0 %U&apos;" modified="2025-03-21T15:33:41.794355Z" count="1"/>
+          <bookmark:application name="GNU Image Manipulation Program" exec="&apos;gimp-3.0 %u&apos;" modified="2025-03-21T15:33:53.611682Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/test.pdf" added="2025-03-21T15:37:11.790070Z" modified="2025-03-21T15:38:48.296129Z" visited="2025-03-21T15:37:11.790070Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/pdf"/>
+        <bookmark:applications>
+          <bookmark:application name="Dokumentenbetrachter" exec="&apos;evince %u&apos;" modified="2025-03-21T15:38:48.296128Z" count="4"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

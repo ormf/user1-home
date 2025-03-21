@@ -76,13 +76,12 @@
 
 (defun install-incudine-hooks ()
   (interactive)
-  ;; (sly-interactive-eval "(when (find-package :clamps)
-  ;;   (clamps:call-sly-connected-hooks))")
-  )
+  (sly-interactive-eval "(when (find-package :clamps)
+    (cm:call-sly-connected-hooks))"))
 
 (setq sly-connected-hook '(sly-mrepl-on-connection))
-(setq sly-connected-hook
-      (cons 'install-incudine-hooks sly-connected-hook))
+;; (setq sly-connected-hook
+;;       (cons 'install-incudine-hooks sly-connected-hook))
 
 (defun test-midi ()
   (interactive)

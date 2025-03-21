@@ -1,0 +1,10 @@
+(ql.quickload :clamps)####
+(ql:update-all-dists)####
+(ql:quickload :xpath)####
+(events (new sfz :time 0) *rts-out*)####
+(events (new sfz :time 0) "/tmp/test.svg")####
+(events (new sfz :time 0) "/tmp/test.ly")####
+(ql:quickload :clamps)####
+(clamps)####
+(sprout (new midi :time 0))####
+(output (new sfz))####

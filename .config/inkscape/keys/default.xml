@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<keys
+   name="User Shortcuts">
+  <bind
+     gaction="app.orminx.play-selection"
+     keys="&lt;Primary&gt;&lt;Alt&gt;p" />
+</keys>

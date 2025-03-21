@@ -13,6 +13,7 @@
 ;; expression. Used only if the dynamic linker fails to search a library
 ;; (see CFFI:*FOREIGN-LIBRARY-DIRECTORIES*)
 (setq *foreign-library-directories* nil)
+#+darwin (setq *foreign-header-file-directories* (list (pathname "/opt/homebrew/include")))
 
 ;;;--------------------[ RT and NRT priorities ]--------------------
 
@@ -32,6 +33,7 @@
 
 ;;;-----------------------[ Audio settings ]------------------------
 
+
 ;; Real time audio:
 ;;
 ;;     :dummy
@@ -42,13 +44,11 @@
 ;; :portaudio and :portaudio-jack are the same, but with the last
 ;; it is possible to set the Jack client name.
 ;;
-(setq *audio-driver*
-      #+linux :jack
-      #-linux :portaudio)
+(setq *audio-driver* :jack)
 
 ;; Realtime block size in frames.
-(setq *rt-block-size* 32)
 (setq *rt-block-size* 1)
+;;; (setq *rt-block-size* 32)
 
 (setq *sample-rate* 44100)
 (setq *client-name* "incudine")
@@ -56,10 +56,11 @@
 (setq *number-of-input-bus-channels* 8)
 (setq *number-of-output-bus-channels* 8)
 (setq *max-buffer-size* 1024)
+;;; (setq *number-of-ctl-bus-channels* 1024)
+;;; (setq *number-of-audio-bus-channels* 4096)
 (declaim (type (integer 0 4194304) *number-of-bus-channels*))
+;;; (setq *number-of-bus-channels* (* *number-of-audio-bus-channels* *max-buffer-size*))
 (setq *number-of-bus-channels* (* 4096 *max-buffer-size*))
-
-
 ;; Used only with PortAudio.
 (setq *frames-per-buffer* 512)
 
@@ -135,6 +136,8 @@
 ;;; Velocity of the sound at 22°C, 1 atmosfera.
 (setq *sound-velocity* 345)
 
+#+incudine
+(setf incudine.util:*logger-stream* *error-output*)
 
 ;;; Local Variables:
 ;;; mode: lisp

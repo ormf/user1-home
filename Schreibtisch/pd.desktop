@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pure Data
+Comment=The Pure Data real-time music and multimedia environment
+Exec=pd -rt -jack -alsamidi -mididev 1 -channels 8
+Icon=pd
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;Audio;

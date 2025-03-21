@@ -1,0 +1,15 @@
+# settings
+
+(width 500)
+(height 500)
+(keep-ratio yes)
+(prefer-native-dimensions yes)
+(check-bbox yes)
+(pages "1")
+(coloring "rgb")
+(text-alpha-bits "none")
+(graphic-alpha-bits "none")
+(pixel-density 300)
+(physical-unit inches)
+
+# end of settings

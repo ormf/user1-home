@@ -23,9 +23,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(browse-url-firefox-program "firefox-developer-edition")
  '(custom-enabled-themes '(deeper-blue))
- '(package-selected-packages
-   '(magit sly-repl-ansi-color sly-quicklisp sly-named-readtables sly-macrostep rainbow-delimiters paredit company)))
+ '(package-selected-packages nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

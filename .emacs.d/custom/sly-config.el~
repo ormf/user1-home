@@ -3,57 +3,68 @@
 (require 'sly)
 (require 'sly-autoloads)
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program
+      (cl-case system-type
+       ('gnu/linux "/usr/bin/sbcl")
+       ('darwin "/opt/homebrew/bin/sbcl")))
+
 ;;; (setq inferior-lisp-program "/usr/local/bin/cm-all")
 
 (setq sly-lisp-implementations
-      '((sbcl ("/usr/bin/sbcl") :coding-system utf-8-unix)
-        (clamps ("/usr/local/bin/clamps") :coding-system utf-8-unix)
-        (f.orm ("/usr/local/bin/f.orm") :coding-system utf-8-unix)
-        (vortrag-graz ("/usr/local/bin/vortrag-24-graz") :coding-system utf-8-unix)
-        (tenor-24 ("/usr/local/bin/tenor-24") :coding-system utf-8-unix)))
+      `((sbcl (,inferior-lisp-program) :coding-system utf-8-unix)
+        (clamps ("/usr/local/bin/clamps") :coding-system utf-8-unix)))
 
 (setq sly-use-autodoc-mode t)
 
 (add-hook
  'lisp-mode-hook
  (lambda ()
+   (sly-mode t)
    (recentf-mode t)
    (company-mode t)
    (rainbow-delimiters-mode t)
    (paredit-mode t)
    (define-key sly-mode-map (kbd "C-c C-y") 'sly-mrepl)
    (define-key sly-mode-map (kbd "\C-c\C-dc") 'cm-lookup)
-   (define-key sly-mode-map (kbd "C-.") 'incudine-hush)
+   (define-key sly-mode-map (kbd "C-.") 'clamps-hush)
    (define-key sly-mode-map (kbd "C-c C-.") 'incudine-rt-stop)
    (define-key sly-mode-map (kbd "C-c M-.") 'incudine-rt-start)
-   (define-key sly-mode-map (kbd "C-c t") 'test-midi)))
+   (define-key sly-mode-map (kbd "C-c t") 'test-midi)
+   (define-key sly-mode-map (kbd "C-c C-d l") 'cltl2-view-function-definition)
+   (define-key sly-mode-map (kbd "C-c C-d h") 'hyperspec-lookup)))
+
+(eval-after-load 'paredit
+       '(progn
+          (define-key paredit-mode-map (kbd "RET") nil)
+          (define-key paredit-mode-map (kbd "C-j") 'paredit-newline)))
 
 (setq sly-enable-evaluate-in-emacs t)
+
+(defun clamps ()
+  (interactive)
+  (sly-mrepl--with-repl (sly-mrepl--find-create (sly-connection))
+    (sly-mrepl--eval-for-repl
+     '(cl-user:clamps))))
 
 (defun std-incudine-hush ()
   (interactive)
   (progn
     (sly-interactive-eval "(incudine:flush-pending)")
-    (sly-interactive-eval "(dotimes (chan 16) (cm::sprout (cm::new cm::midi-control-change :time 0 :controller 123 :value 127 :channel chan)))")
-    (sly-interactive-eval "(incudine::node-free-unprotected)")
-;;;    (sly-interactive-eval "(scratch::node-free-all)")
-    ))
+    ;; (sly-interactive-eval "(dotimes (chan 16) (cm::sprout (cm::new cm::midi-control-change :time 0 :controller 123 :value 127 :channel chan)))")
+;;;    (sly-interactive-eval "(incudine::node-free-unprotected)")
+    (sly-interactive-eval "(incudine::node-free-all)")))
 
-(defun cm-incudine-hush ()
+(defun clamps-hush ()
   (interactive)
-  (progn
-    (sly-interactive-eval "(cm::rts-hush)")
-;;;    (sly-interactive-eval "(scratch::node-free-all)")
-    ))
+  (sly-interactive-eval "(clamps::rts-hush)"))
 
 (defun set-std-incudine-hush ()
   (interactive)
   (setq incudine-hush (symbol-function 'std-incudine-hush)))
 
-(defun set-cm-incudine-hush ()
+(defun set-clamps-incudine-hush ()
   (interactive)
-  (setq incudine-hush (symbol-function 'cm-incudine-hush)))
+  (setq incudine-hush (symbol-function 'clamps-hush)))
 
 (defun incudine-rt-start ()
   (interactive)
@@ -65,11 +76,10 @@
 
 (defun install-incudine-hooks ()
   (interactive)
-  (sly-interactive-eval "(when (find-package :cm-all)
-    (call-sly-connected-hooks))"))
+  (sly-interactive-eval "(when (find-package :clamps)
+    (cm:call-sly-connected-hooks))"))
 
-;;; (setq sly-connected-hook '(install-incudine-hooks sly-mrepl-on-connection))
-
+(setq sly-connected-hook '(sly-mrepl-on-connection))
 (setq sly-connected-hook
       (cons 'install-incudine-hooks sly-connected-hook))
 
@@ -77,7 +87,7 @@
   (interactive)
   (sly-interactive-eval "(cm::testmidi)"))
 
-(set-cm-incudine-hush)
+(set-clamps-incudine-hush)
 
 (global-set-key "\C-x\C-l" 'sly)
 
@@ -95,13 +105,16 @@
    (define-key sly-mrepl-mode-map (kbd "C-.") 'incudine-hush)
    (define-key sly-mrepl-mode-map (kbd "C-c C-.") 'incudine-rt-stop)
    (define-key sly-mrepl-mode-map (kbd "C-c M-.") 'incudine-rt-start)
-   (define-key sly-mrepl-mode-map (kbd "C-c t") 'test-midi)))
+   (define-key sly-mrepl-mode-map (kbd "C-c t") 'test-midi)
+   (define-key sly-mrepl-mode-map (kbd "C-c C-d l") 'cltl2-view-function-definition)
+   (define-key sly-mrepl-mode-map (kbd "C-c C-d h") 'hyperspec-lookup)))
 
+(add-to-list 'load-path "~/quicklisp/local-projects/clamps/extra/elisp")
 (require 'cm)
 (load "clamps.el")
 (load "cm-dict.el")
 (load "clamps-dict.el")
-
+(load (expand-file-name "~/quicklisp/clhs-use-local.el") t)
 (sly)
 
 ;; ======== End SLY ============================================================

@@ -1,0 +1,30 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/gast/.emacs.d/" . "custom/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/gast/.emacs.d/custom/"
+ "/home/gast/.emacs.d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "sly-config.el"
+ "init.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/gast/.emacs.d/custom/" (26589 29276 530754 431000) "cl-font-lock-add-ons.el" "sly-config.el~" "common-lisp-config.el" "browse-cltl2.el" "igrep.el" "clamps-packages.el~" "company-anywhere/" "clamps-packages.el" "sly-config.el" "lilypond-mode.el" "../" "./")
+
+ ("/home/gast/.emacs.d/" (26589 32355 758188 781000) ".#init.el" "transient/" "recentf" "auto-save-list/" "init.el" "eln-cache/" "elpa/" "custom/" "init.el~" "../" "./")
+
+ ("/home/gast/" (26589 32335 539888 673000) ".pdsettings" "Pd/" ".sly-mrepl-history" ".emacs.d/" ".mozilla/" ".clampsinit.lisp" ".orgel-server-init.lisp" ".sbclrc" ".incudinerc" ".bash_history" ".jackdrc" ".icons/" "Bilder/" "Musik/" "Dokumente/" "Öffentlich/" "Vorlagen/" "Schreibtisch/" ".cache/" ".local/" ".config/" "Videos/" "Downloads/" ".themes/" "jackmidi-default-patchbay.xml" "quicklisp/" ".ssh/" ".bashrc" ".bash_profile" ".bash_logout" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
